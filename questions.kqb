@@ -1,0 +1,85 @@
+name($ans)
+	What is your name?
+  ---
+  $ans = string
+
+freq_interest($ans)
+	Con qué frecuencia ha tenido poco interés o placer en hacer cosas?
+	---
+	$ans = select_1
+		1: Nunca
+		2: Varios días
+		3: Más de la mitad de los días
+		4: Casi todos los días
+
+freq_sadness($ans)
+	Con qué frecuencia ha tenido sentimientos de tristeza, desesperanza o vacío?
+	---
+	$ans = select_1
+		1: Nunca
+		2: Varios días
+		3: Más de la mitad de los días
+		4: Casi todos los días
+
+freq_difficulty_sleeping($ans)
+	Con qué frecuencia ha tenido dificultad para dormir, como problemas para conciliar el sueño, despertarse demasiado temprano o dormir demasiado?
+	---
+	$ans = select_1
+		1: Nunca
+		2: Varios días
+		3: Más de la mitad de los días
+		4: Casi todos los días
+
+freq_fatigue($ans)
+	Con qué frecuencia se ha sentido cansado o con poca energía?
+	---
+	$ans = select_1
+		1: Nunca
+		2: Varios días
+		3: Más de la mitad de los días
+		4: Casi todos los días
+
+freq_concentration($ans)
+	Con qué frecuencia ha tenido dificultad para concentrarse en cosas, como leer el periódico o ver televisión?
+	---
+	$ans = select_1
+		1: Nunca
+		2: Varios días
+		3: Más de la mitad de los días
+		4: Casi todos los días
+
+freq_self_perception($ans)
+	Con qué frecuencia se ha sentido mal consigo mismo(a) o que es un fracaso o que ha decepcionado a su familia o a sí mismo(a)?
+	---
+	$ans = select_1
+		1: Nunca
+		2: Varios días
+		3: Más de la mitad de los días
+		4: Casi todos los días
+
+freq_self_injury($ans)
+	Con qué frecuencia ha tenido pensamientos de lastimarse a sí mismo(a) de alguna manera?
+	---
+	$ans = select_1
+		1: Nunca
+		2: Varios días
+		3: Más de la mitad de los días
+		4: Casi todos los días
+
+freq_dream($ans)
+	Con qué frecuencia ha tenido dificultades para dormir o ha estado durmiendo demasiado?
+	---
+	$ans = select_1
+		1: Nunca
+		2: Varios días
+		3: Más de la mitad de los días
+		4: Casi todos los días
+
+freq_appetite($ans)
+	Con qué frecuencia ha notado cambios en su apetito o en su peso?
+	---
+	$ans = select_1
+		1: Nunca
+		2: Varios días
+		3: Más de la mitad de los días
+		4: Casi todos los días

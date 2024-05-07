@@ -1,0 +1,61 @@
+calculate_score_1
+  foreach
+    questions.freq_interest($ans0)
+    questions.freq_sadness($ans1)
+    questions.freq_difficulty_sleeping($ans2)
+    questions.freq_fatigue($ans3)
+    questions.freq_concentration($ans4)
+
+    $partial_score_1 = $ans0 + $ans1 + $ans2 + $ans3 + $ans4
+  assert
+    facts.depression_score_partial_1($partial_score_1)
+
+calculate_score_2
+  foreach
+    questions.freq_self_perception($ans5)
+    questions.freq_self_injury($ans6)
+    questions.freq_dream($ans7)
+    questions.freq_appetite($ans8)
+
+    $partial_score_2 = $ans5 + $ans6 + $ans7 + $ans8
+  assert
+    facts.depression_score_partial_2($partial_score_2)
+
+total_score
+  foreach
+    questions.name($name)
+    facts.depression_score_partial_1($partial_score_1)
+    facts.depression_score_partial_2($partial_score_2)
+
+    $total_score = $partial_score_1 + $partial_score_2 - 9
+  assert
+    facts.depression_score($name, $total_score)
+
+none_depression
+  foreach 
+    facts.depression_score($name, $total_score)
+    check 0 <= $total_score <= 4
+  assert
+    facts.depression_severity($total_score, none)
+
+mild_depression
+  foreach 
+    facts.depression_score($name, $total_score)
+    check 5 <= $total_score <= 9
+  assert
+    facts.depression_severity($total_score, mild)
+
+moderate_depression
+  foreach 
+    facts.depression_score($name, $total_score)
+    check 10 <= $total_score <= 14
+  assert
+    facts.depression_severity($total_score, moderate)
+
+severe_depression
+  foreach 
+    facts.depression_score($name, $total_score)
+    check 15 <= $total_score
+  assert
+    facts.depression_severity($total_score, severe)
+

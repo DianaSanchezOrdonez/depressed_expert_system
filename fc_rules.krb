@@ -1,0 +1,13 @@
+count_depressed_indicators
+  foreach
+    facts.patient_data($name_patient)
+    python count = 0
+    forall
+      facts.attributes($name_patient, $name_indicator, $value)
+      check $value > 0
+      python count = count + $value
+
+    $total_score = int(count)
+  assert
+    facts.depressed_total_score($name_patient, $total_score)
+
