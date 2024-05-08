@@ -1,6 +1,7 @@
-count_depressed_indicators
+
+count_depression_indicators
   foreach
-    facts.patient_data($name_patient)
+    facts.patient_data($name_patient, $age, $gender)
     python count = 0
     forall
       facts.attributes($name_patient, $name_indicator, $value)
@@ -9,5 +10,57 @@ count_depressed_indicators
 
     $total_score = int(count)
   assert
-    facts.depressed_total_score($name_patient, $total_score)
+    facts.count_depression_indicators($name_patient, $total_score)
+
+activity_frequency_low
+  foreach
+    facts.patient_data($name_patient, $age, $gender)
+    facts.activity_indicator_freq($name_patient, $activity_name, 1)
+  assert
+    facts.activity_frequency($name_patient, $activity_name, low)
+
+activity_frequency_medium
+  foreach
+    facts.patient_data($name_patient, $age, $gender)
+    facts.activity_indicator_freq($name_patient, $activity_name, 2)
+  assert
+    facts.activity_frequency($name_patient, $activity_name, medium)
+
+activity_frequency_high
+  foreach
+    facts.patient_data($name_patient, $age, $gender)
+    facts.activity_indicator_freq($name_patient, $activity_name, 3)
+  assert
+    facts.activity_frequency($name_patient, $activity_name, high)
+
+has_suicidal_thoughts 
+  foreach
+    facts.patient_data($name_patient, $age, $gender)
+    facts.attributes($name_patient, suicidal_thoughts, 1)
+  assert
+    facts.has_depression($name_patient, True)
+
+has_depression
+  foreach
+    facts.count_depression_indicators($name_patient, $total_score)
+    check $total_score >= 4
+  assert
+    facts.has_depression($name_patient, True)
+
+relaxation_recommendation
+  foreach
+    facts.patient_data($name_patient, $age, $gender)  
+    facts.has_depression($name_patient, True)
+    facts.activity_frequency($name_patient, stress_level, high)
+    $message = "Practique actividades de relajación y mindfulness para reducir el estrés."
+  assert
+    facts.recommendation_message($name_patient, $message)
+
+professional_help_recommendation
+  foreach
+    facts.patient_data($name_patient, $age, $gender)  
+    facts.attributes($name_patient, suicidal_thoughts, 1)
+    $message = "Consulte con un profesional de la salud mental de inmediato para obtener ayuda y apoyo especializado."
+  assert
+    facts.recommendation_message($name_patient, $message)
 

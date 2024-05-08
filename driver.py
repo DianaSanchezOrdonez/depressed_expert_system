@@ -9,12 +9,17 @@ def fc_rules_fn():
   print("doing proof")
 
   try:
-    with engine.prove_goal("facts.depressed_total_score($name_patient, $total_score)") as gen:
+    with engine.prove_goal("facts.has_depression($name_patient, $status)") as gen:
       for vars, plan in gen:
-        # Accede a las variables de la regla correctamente
         name_patient = vars['name_patient']
-        total_score = vars['total_score']
-        print("Dear", name_patient, "-", total_score)
+        status = vars['status']
+        print("Dear", name_patient, "-", status)
+
+    with engine.prove_goal("facts.recommendation_message($name_patient, $message)") as gen:
+      for vars, plan in gen:
+        name_patient = vars['name_patient']
+        message = vars['message']
+        print("Dear", name_patient, "-", message)
   except Exception as e:
     print("Error:", e)
     krb_traceback.print_exc()

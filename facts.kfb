@@ -7,19 +7,35 @@ indicators(concentration_difficulties)
 indicators(suicidal_thoughts)
 indicators(sleep_disturbances)
 
-patient_data(ana)
-patient_data(jhon)
-patient_data(mary)
+patient_data(ana, 18, female)
+patient_data(jhon, 35, masculine)
+patient_data(mary, 20, female)
 
 attributes(ana, depressed_mood, 1)
-attributes(ana, loss_of_interest, 0)
+attributes(ana, loss_of_interest, 1)
 attributes(ana, fatigue, 0)
 attributes(ana, changes_in_appetite, 0)
 attributes(ana, feelings_of_worthlessness, 1)
 attributes(ana, concentration_difficulties, 1)
-attributes(ana, suicidal_thoughts, 1)
+attributes(ana, suicidal_thoughts, 0)
 attributes(ana, sleep_disturbances, 0)
 attributes(jhon, concentration_difficulties, 1)
 attributes(jhon, suicidal_thoughts, 1)
 attributes(jhon, sleep_disturbances, 0)
 attributes(mary, sleep_disturbances, 0)
+
+# indicator_freq => low, medium, high
+# physical_activity
+# stress_level
+
+activity_indicator_freq(ana, physical_activity, 1)
+activity_indicator_freq(ana, stress_level, 3)
+activity_indicator_freq(jhon, physical_activity, 1)
+activity_indicator_freq(mary, physical_activity, 3)
+
+recommendation(daily_routine)
+recommendation(cognitive_behavioral_therapy)
+recommendation(exercise)
+recommendation(relaxation_mindfulness_exercises)
+recommendation(professional_help)
+
