@@ -10,6 +10,7 @@ indicators(sleep_disturbances)
 patient_data(ana, 18, female)
 patient_data(jhon, 35, masculine)
 patient_data(mary, 20, female)
+patient_data(michael, 45, masculine)
 
 attributes(ana, depressed_mood, 1)
 attributes(ana, loss_of_interest, 1)
@@ -23,19 +24,25 @@ attributes(jhon, concentration_difficulties, 1)
 attributes(jhon, suicidal_thoughts, 1)
 attributes(jhon, sleep_disturbances, 0)
 attributes(mary, sleep_disturbances, 0)
+attributes(michael, changes_in_appetite, 1)
+attributes(michael, sleep_disturbances, 1)
 
 # indicator_freq => low, medium, high
 # physical_activity
 # stress_level
+# sleep_quality
+# meal_regularity
 
 activity_indicator_freq(ana, physical_activity, 1)
 activity_indicator_freq(ana, stress_level, 3)
-activity_indicator_freq(jhon, physical_activity, 1)
+activity_indicator_freq(jhon, physical_activity, 2)
 activity_indicator_freq(mary, physical_activity, 3)
+activity_indicator_freq(michael, sleep_quality, 1)
+activity_indicator_freq(michael, meal_regularity, 1)
 
-recommendation(daily_routine)
-recommendation(cognitive_behavioral_therapy)
-recommendation(exercise)
-recommendation(relaxation_mindfulness_exercises)
-recommendation(professional_help)
+# recommendation(daily_routine)
+# recommendation(cognitive_behavioral_therapy)
+# recommendation(exercise)
+# recommendation(relaxation_mindfulness_exercises)
+# recommendation(professional_help)
 

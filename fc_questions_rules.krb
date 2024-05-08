@@ -1,3 +1,9 @@
+get_attributes
+  foreach
+    questions.name($name_patient)
+  assert
+    facts.get_attributes($name_patient)
+
 calculate_score_1
   foreach
     questions.freq_interest($ans0)
@@ -58,4 +64,38 @@ severe_depression
     check 15 <= $total_score
   assert
     facts.depression_severity($total_score, severe)
+
+none_depression_recommendation
+  foreach
+    facts.get_attributes($name_patient)
+    facts.depression_severity($total_score, none)
+    $message = "Parece que estás interesado/a en aprender más sobre la depresión.\nEs valioso informarse y comprender mejor esta condición para apoyar a quienes la experimentan. Considera hablar con un profesional de la salud mental si necesitas más orientación o recursos sobre este tema."
+  assert
+    facts.recommendation_message($name_patient, $message)
+
+mild_depression_recommendation
+  foreach
+    facts.get_attributes($name_patient)
+    facts.depression_severity($total_score, mild)
+    $message = "Parece que está experimentando síntomas de depresión leve.\nSería útil hablar con un profesional de la salud mental para obtener apoyo y orientación en este momento."
+  assert
+    facts.recommendation_message($name_patient, $message)
+
+moderate_depression_recommendation
+  foreach
+    facts.get_attributes($name_patient)
+    facts.depression_severity($total_score, moderate)
+    $message = "Parece que está experimentando una depresión moderada.\nLe recomendamos que busque apoyo de un profesional de la salud mental o un terapeuta.\nHablar sobre sus sentimientos y recibir orientación puede ser de gran ayuda para superar esta etapa."
+  assert
+    facts.recommendation_message($name_patient, $message)
+
+severe_depression_recommendation
+  foreach
+    facts.get_attributes($name_patient)
+    facts.depression_severity($total_score, severe)
+    $message = "Su depresión parece ser severa.\nLe recomendamos que busque ayuda profesional de inmediato.\nUn profesional de la salud mental puede ofrecerle el apoyo y tratamiento necesarios para enfrentar esta situación."
+  assert
+    facts.recommendation_message($name_patient, $message)
+
+    
 
