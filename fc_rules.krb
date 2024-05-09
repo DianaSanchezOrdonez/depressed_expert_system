@@ -54,7 +54,7 @@ relaxation_recommendation
     facts.activity_frequency($name_patient, stress_level, high)
     $message = "Practique actividades de relajación y mindfulness para reducir el estrés."
   assert
-    facts.recommendation_message($name_patient, $message)
+    facts.recommendation_message($name_patient, $age, $gender, $message)
 
 professional_help_recommendation
   foreach
@@ -62,7 +62,7 @@ professional_help_recommendation
     facts.attributes($name_patient, suicidal_thoughts, 1)
     $message = "Consulte con un profesional de la salud mental de inmediato para obtener ayuda y apoyo especializado."
   assert
-    facts.recommendation_message($name_patient, $message)
+    facts.recommendation_message($name_patient, $age, $gender, $message)
 
 exercise_recommendation
   foreach
@@ -71,14 +71,15 @@ exercise_recommendation
     facts.activity_frequency($name_patient, physical_activity, low)
     $message = "Practique ejercicio físico regularmente para mejorar su estado de ánimo."
   assert
-    facts.recommendation_message($name_patient, $message)
+    facts.recommendation_message($name_patient, $age, $gender, $message)
 
 routine_recommendation
   foreach
+    facts.patient_data($name_patient, $age, $gender)  
     facts.attributes($name_patient, changes_in_appetite, 1)
     facts.attributes($name_patient, sleep_disturbances, 1) 
     facts.activity_frequency($name_patient, sleep_quality, low)
     facts.activity_frequency($name_patient, meal_regularity, low)
     $message = "Establezca una rutina diaria con horarios regulares de sueño y comidas."
   assert
-    facts.recommendation_message($name_patient, $message)
+    facts.recommendation_message($name_patient, $age, $gender, $message)
